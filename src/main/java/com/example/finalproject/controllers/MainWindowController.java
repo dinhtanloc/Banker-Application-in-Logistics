@@ -87,8 +87,8 @@ public class MainWindowController implements Initializable {
                 label.setStyle("-fx-background-color: lightblue; -fx-alignment: center;");
                 label.setText("Order "+OrderIDImport()[row-1]);
                 titlepane.add(label,0,row);
-                GridPane.setHgrow(label, Priority.ALWAYS); // Allow the button to grow horizontally
-                GridPane.setVgrow(label, Priority.ALWAYS); // Allow the button to grow vertically
+                GridPane.setHgrow(label, Priority.ALWAYS);
+                GridPane.setVgrow(label, Priority.ALWAYS);
                 GridPane.setHalignment(label, HPos.CENTER);
                 GridPane.setValignment(label, VPos.CENTER);
 
@@ -114,8 +114,8 @@ public class MainWindowController implements Initializable {
                 label.setText("Order "+arr[row-1]);}
                 else{label.setText("X");}
                 safeSeq_pane.add(label,0,row);
-                GridPane.setHgrow(label, Priority.ALWAYS); // Allow the button to grow horizontally
-                GridPane.setVgrow(label, Priority.ALWAYS); // Allow the button to grow vertically
+                GridPane.setHgrow(label, Priority.ALWAYS);
+                GridPane.setVgrow(label, Priority.ALWAYS);
                 GridPane.setHalignment(label, HPos.CENTER);
                 GridPane.setValignment(label, VPos.CENTER);
 
@@ -138,7 +138,6 @@ public class MainWindowController implements Initializable {
             for(int col=0;col<cols+1;col++){
                 Label label =new Label();
                 label.setFont(Font.font("Arial", FontWeight.BOLD, 12));
-//                label.setPadding(new Insets(10));
                 label.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
                 label.setStyle("-fx-background-color: lightblue; -fx-alignment: center;");
 
@@ -150,7 +149,7 @@ public class MainWindowController implements Initializable {
                     label.setTextFill(Color.DARKBLUE); // Set text color
                     label.setFont(Font.font("Arial", FontWeight.BOLD, 12)); // Set font
                     label.setBackground(new Background(new BackgroundFill(Color.LIGHTBLUE,
-                            CornerRadii.EMPTY, Insets.EMPTY))); // Set background color
+                            CornerRadii.EMPTY, Insets.EMPTY)));
                     label.setStyle("-fx-alignment: center;");
                     if (checkme.equals("False")){
                     label.setText(Integer.toString(order[i-1]));}
@@ -161,8 +160,8 @@ public class MainWindowController implements Initializable {
                         else{label.setText("X");}
                     }
                     grid.add(label, 0, i);
-                    GridPane.setHgrow(label, Priority.ALWAYS); // Allow the button to grow horizontally
-                    GridPane.setVgrow(label, Priority.ALWAYS); // Allow the button to grow vertically
+                    GridPane.setHgrow(label, Priority.ALWAYS);
+                    GridPane.setVgrow(label, Priority.ALWAYS);
                     GridPane.setHalignment(label, HPos.CENTER);
                     GridPane.setValignment(label, VPos.CENTER);
                 }
@@ -176,8 +175,8 @@ public class MainWindowController implements Initializable {
                     label.setStyle("-fx-alignment: center;");
                     label.setText(Integer.toString(array[i-1][j-1]));
                     grid.add(label, j, i);
-                    GridPane.setHgrow(label, Priority.ALWAYS); // Allow the button to grow horizontally
-                    GridPane.setVgrow(label, Priority.ALWAYS); // Allow the button to grow vertically
+                    GridPane.setHgrow(label, Priority.ALWAYS);
+                    GridPane.setVgrow(label, Priority.ALWAYS);
                     GridPane.setHalignment(label, HPos.CENTER);
                     GridPane.setValignment(label, VPos.CENTER);
                 }
@@ -197,7 +196,6 @@ public class MainWindowController implements Initializable {
             for(int col=0;col<cols;col++){
                 Label label =new Label();
                 label.setFont(Font.font("Arial", FontWeight.BOLD, 12));
-//                label.setPadding(new Insets(10));
                 label.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
                 label.setStyle("-fx-background-color: lightblue; -fx-alignment: center;");
 
@@ -207,15 +205,15 @@ public class MainWindowController implements Initializable {
             for (int i = 1; i <= rows; i++) {
                 for (int j = 0; j < cols; j++) {
                     Label label = new Label();
-                    label.setTextFill(Color.DARKBLUE); // Set text color
-                    label.setFont(Font.font("Arial", FontWeight.BOLD, 12)); // Set font
+                    label.setTextFill(Color.DARKBLUE);
+                    label.setFont(Font.font("Arial", FontWeight.BOLD, 12));
                     label.setBackground(new Background(new BackgroundFill(Color.LIGHTBLUE,
-                            CornerRadii.EMPTY, Insets.EMPTY))); // Set background color
+                            CornerRadii.EMPTY, Insets.EMPTY)));
                     label.setStyle("-fx-alignment: center;");
                     label.setText(Integer.toString(array[i-1][j]));
                     grid.add(label, j, i);
-                    GridPane.setHgrow(label, Priority.ALWAYS); // Allow the button to grow horizontally
-                    GridPane.setVgrow(label, Priority.ALWAYS); // Allow the button to grow vertically
+                    GridPane.setHgrow(label, Priority.ALWAYS);
+                    GridPane.setVgrow(label, Priority.ALWAYS);
                     GridPane.setHalignment(label, HPos.CENTER);
                     GridPane.setValignment(label, VPos.CENTER);
                 }
@@ -225,7 +223,6 @@ public class MainWindowController implements Initializable {
             System.out.println("Invalid input. Please enter valid numbers.");
         }
     }
-    //FUNCTION ĐỂ KHỞI TẠO GRID
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -243,23 +240,18 @@ public class MainWindowController implements Initializable {
             stage.setScene(scene);
             stage.show();
             ((Node)(event.getSource())).getScene().getWindow().hide();
-            //xoa username + password
             Storing.putValueToPreferences("username", "");
             Storing.putValueToPreferences("password", "");
         });
 
-        //Câu lêệnh tạm thời kết nối sql
         MySQLConnector mySQLConnector=MySQLConnector.getInstance();
         mySQLConnector.Connect("root", "123456hn");
 
-        //Nhap file vao he thong
         importItem.setOnAction(event -> {
             FileChooser fileChooser = new FileChooser();
 
-            // Đặt tiêu đề cho cửa sổ chọn tệp (tùy chọn)
             fileChooser.setTitle("Choose a File");
 
-            // Hiển thị cửa sổ chọn tệp và lấy tệp được chọn
             File selectedFile = fileChooser.showOpenDialog(null);
 
             if (selectedFile != null) {
@@ -270,25 +262,19 @@ public class MainWindowController implements Initializable {
         });
         exportItem.setOnAction(event -> {
             FileChooser fileChooser = new FileChooser();
-
-            // Đặt tiêu đề cho cửa sổ chọn tệp (tùy chọn)
             fileChooser.setTitle("Save File");
-
-            // Hiển thị cửa sổ lưu tệp và lấy tệp được chọn
             File savedFile = fileChooser.showSaveDialog(null);
 
             if (savedFile != null) {
                 String filePath = savedFile.getAbsolutePath();
                 String absolutePath = savedFile.getAbsolutePath();
-                String parentDirectory = savedFile.getParent(); // Đây là thư mục chứa tệp
+                String parentDirectory = savedFile.getParent();
                 System.out.println(parentDirectory + absolutePath + absolutePath + filePath);
                 exportFromMySQL(filePath, "exportFile");
             }
         });
 
 
-        //available
-        //Nhập tt database, nhấn nút, sau đó lấy thông tin
         setupBtn.setOnAction(event -> {
             int warehouse_available = Integer.parseInt(warehouse_input.getText());
             int truck_available = Integer.parseInt(truck_input.getText());
@@ -308,16 +294,13 @@ public class MainWindowController implements Initializable {
             R=4;
             Processtext.setText(Integer.toString(P));
             RSStext.setText(Integer.toString(R));
-            //In ra danh sách đơn hàng
             importID=new int[P];
             importID=OrderIDImport();
             for(int i=0;i<importID.length;i++){
                 System.out.println(importID[i]);
 
             }
-//            p_title(importID);
 
-            //Khởi tạo allocation và hiển thị giá trị allocation
             allocation=new int[P][R];
             allocation=Allocation(in4_dtb);
             array_order(allocation_arr,P,R,allocation,importID,"False",false);
@@ -327,10 +310,7 @@ public class MainWindowController implements Initializable {
             max=Max(in4_dtb);
             format_array(max_arr,P,R,max);
 
-            //Khởi tạo Available
             int available[]={warehouse_available,truck_available,employee_available,amount_available};
-
-            //Khởi tạo request
             int request[]={warehouse_request,truck_request,employee_request,amount_request};
 
             Banker deadlock2=new Banker(P,P_request,work_array,safe_lst);
@@ -344,28 +324,21 @@ public class MainWindowController implements Initializable {
 
             }
 
-            //in kq available ra
             warehouse_showing.setText(warehouse_input.getText());
             truck_showing.setText(truck_input.getText());
             employee_showing.setText(employee_input.getText());
             amount_showing.setText(amount_input.getText());
 
-            //IN kq work ra
             work_array=deadlock2.getWork_array();
             format_array(work_arr,P,R,work_array);
             printArr(work_array,P,R);
 
-            // khoi tao in kq need ra
             System.out.println("------");
             need_array = new int[P][R];
             need_array=deadlock2.calculateNeed(need_array,max,allocation);
             format_array(need_arr,P,R,need_array);
-//            printArr(need_array,P,R);
-
-            //In ra thứ tự đơn hàng
             safe_lst=new int[P];
             safe_lst=deadlock2.getSafeSeq();
-//            sort_lst(safe_lst,check);
             array_order(work_arr,P,R,work_array,safe_lst,"True",check);
 
             inputData_exportFile(safe_lst);
@@ -376,13 +349,11 @@ public class MainWindowController implements Initializable {
                  Connection connection = MySQLConnector.getConnection())
             {
 
-                // Đọc dòng đầu tiên chứa tên cột
                 String[] headers = reader.readNext();
                 if (headers == null) {
                     throw new IllegalArgumentException("File CSV trống!");
                 }
 
-                // Tạo câu truy vấn SQL dựa trên tên cột
                 StringJoiner columnNames = new StringJoiner(", ", "(", ")");
                 StringJoiner placeholders = new StringJoiner(", ", "(", ")");
                 for (String header : headers) {
@@ -401,7 +372,6 @@ public class MainWindowController implements Initializable {
                 System.out.println(insertQuery);
                 PreparedStatement preparedStatement = connection.prepareStatement(insertQuery);
 
-                // Đọc và chèn dữ liệu từ các dòng tiếp theo
                 String[] line;
                 while ((line = reader.readNext()) != null) {
                     for (int i = 0; i < line.length; i++) {
@@ -592,10 +562,6 @@ public class MainWindowController implements Initializable {
                 int Max_Truck= resultSet.getInt(6);
                 int Max_Employee= resultSet.getInt(7);
                 int Max_Amount= resultSet.getInt(8);
-//                String sql1= """
-//                        INSERT INTO exportfile(Warehouse, Truck, Employee, Amount, Max_Warehouse, Max_Trucks, Max_Employees, Max_Orders)
-//                        VALUES (%s,%s,%s,%s,%s,%s,%s,%s)
-//                        """.formatted(Warehouse,Truck,Employee,Amount,Max_Warehouse,Max_Truck,Max_Employee,Max_Amount);
                 String sql1= """
                         UPDATE exportfile\s
                         SET Warehouse = %s,
