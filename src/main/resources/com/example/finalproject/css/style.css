@@ -1,0 +1,79 @@
+.allocationgridpane-border {
+    -fx-border-color: black;
+    -fx-border-width: 2;
+    -fx-background-color: #eb4034;
+}
+.maxgridpane-border{
+    -fx-border-color: black;
+    -fx-border-width: 2;
+    -fx-background-color: #343aeb;
+
+}
+
+.needgridpane-border{
+    -fx-border-color: black;
+    -fx-border-width: 2;
+    -fx-background-color: #eb34cc;
+
+}
+.workgridpane-border{
+    -fx-border-color: black;
+    -fx-border-width: 2;
+    -fx-background-color: #34ebba;
+
+}
+.vbox {
+    -fx-border-color: black;
+    -fx-border-width: 1px;
+}
+
+.tab{
+    -fx-background-color: #54675C;
+    -fx-pref-height: 50;
+    -fx-pref-width: 440;
+    -fx-font-size: 20px; /* Điều chỉnh kích thước chữ cái theo nhu cầu */
+    -fx-font-weight: bold; /* Đặt font chữ in đậm (tuỳ chọn) */
+    -fx-padding: 0 10 10px 10; /* Khoảng cách dưới TabPane */
+    display: flex;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    /*border-bottom: 20px solid #ccc;*/
+}
+.tab-header-background{
+    -fx-background-color: #54675C;
+}
+
+.tab:selected{
+    -fx-border-color: #d5eee0;
+    -fx-border-width: 0 0 3px 0;
+}
+
+/* Màu nền và màu chữ cho mỗi tab */
+/*.tab-pane .tab {*/
+/*    -fx-background-color: #ffcc66; !* Màu cam nhạt *!*/
+/*    -fx-text-fill: #333333; !* Màu chữ đậm *!*/
+/*}*/
+
+/* Màu nền và màu chữ cho tab đang được chọn */
+.tab:selected .tab-label {
+    /*-fx-background-color: #b5ea15; !* Màu cam *!*/
+    -fx-text-fill: #ffffff; /* Màu chữ trắng */
+    -fx-label-padding: 0,0,60px,0;
+
+
+}
+.tab-label {
+    -fx-background-color: transparent;
+    -fx-border-width: 0;
+    -fx-label-padding: 0,0,20px,0;
+
+    /*-fx-label-padding: 20px ;*/
+}
+.button{
+    -fx-font-size: 18px; /* Điều chỉnh kích thước chữ cái theo nhu cầu */
+    -fx-font-weight: bold; /* Đặt font chữ in đậm */
+    -fx-content-display: top;
+    -fx-alignment: center;
+
+}
